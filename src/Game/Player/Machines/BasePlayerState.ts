@@ -14,7 +14,7 @@ import PlayerActions from "../PlayerActions";
 /** Has methods and queries that all the player states use */
 export default abstract class BasePlayerState implements MachineState {
   readonly abstract updateImmediately: boolean;
-  readonly speed: number = 0.03;
+  readonly speed: number = 0.07 / ((1 / 60) * 1000);;
   readonly drag: number = 0.8;
 
 
@@ -51,6 +51,7 @@ export default abstract class BasePlayerState implements MachineState {
 
 
   update(update: Update): MachineState | undefined {
+
     var player = this.getPlayer(update);
     if (!player)
       return;
@@ -59,20 +60,27 @@ export default abstract class BasePlayerState implements MachineState {
   }
 
   applyLeftAndRightVelocity(update: Update, components: { input: MappedInput, velocity: Velocity, player: Player, sprite: Sprite }) {
-    const { left, right } = this.getKeys(update, components);
+    const { left, right, up, down } = this.getKeys(update, components);
 
     const { velocity, player, sprite } = components;
 
+    const delta = update.delta();
+
     let newVel = velocity.velocity;
+    
     if (player.controlsEnabled && left) {
-      newVel = newVel.add(new Vec2(-this.speed, 0));
-      // player.facing = new Vec2(-1, 0);
+      newVel = newVel.add(new Vec2(-this.speed * delta, 0));
       sprite.scale = new Vec2(1, 1);
     }
     if (player.controlsEnabled && right) {
-      newVel = newVel.add(new Vec2(this.speed, 0));
-      // player.facing = new Vec2(1, 0);
+      newVel = newVel.add(new Vec2(this.speed * delta, 0));
       sprite.scale = new Vec2(-1, 1);
+    }
+    if (player.controlsEnabled && up) {
+      newVel = newVel.add(new Vec2(0, this.speed * delta));
+    }
+    if (player.controlsEnabled && down) {
+      newVel = newVel.add(new Vec2(0, -this.speed * delta));
     }
 
     velocity.velocity = newVel.scalarMultiply(this.drag);

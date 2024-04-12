@@ -24,11 +24,11 @@ export default class IdleState extends BasePlayerState {
 
   protected onUpdate(update: Update, components: { entity: number; player: Player; input: MappedInput, velocity: Velocity; animation: Animated; sprite: Sprite; body: KineticBody; }): MachineState | undefined {
     const { body, player } = components;
-
+    
     var { left, right, up, down } = this.getKeys(update, components);
 
    if (player.controlsEnabled && (left || right || up || down)) {
-   return WalkingState.Instance;
+    return WalkingState.Instance;
    }
 
     this.applyLeftAndRightVelocity(update, components);

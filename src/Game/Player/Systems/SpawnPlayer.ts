@@ -1,4 +1,5 @@
 import LdtkData from "../../../2B2D/Assets/LdtkData";
+import Animated from "../../../2B2D/Components/Animated";
 import KineticBody from "../../../2B2D/Components/KineticBody";
 import MappedInput from "../../../2B2D/Components/MappedInput";
 import Position from "../../../2B2D/Components/Position";
@@ -66,5 +67,6 @@ export default function SpawnPlayer(update: Update) {
        GameLoopCleanup,
        new StateMachine(IdleState.Instance),
        inputMap,
+       new Animated('PlayerIdle')
    ]);   
 }
