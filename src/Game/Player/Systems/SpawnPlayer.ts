@@ -56,7 +56,11 @@ export default function SpawnPlayer(update: Update) {
             a.keyboard('D');
             a.keyboard('ArrowRight');
             a.positive(0, 0.25);
-        })
+        });
+        b.for(PlayerActions.Space, a => {
+          a.keyboard(' ');
+          a.button(0);
+        });
     });
 
    update.spawn([
