@@ -28,17 +28,17 @@ export default function SpawnWinFlag(update: Update) {
     const offset = new Vec2(level.pxWid, level.pxHei).scalarMultiply(-0.5);
     const position = new Vec2(winFlag.px[0], level.pxHei - winFlag.px[1]).add(offset);
 
-   update.spawn([ //TODO review
+   update.spawn([
        new Position(position),
        new Sprite(
-         GameAssets.JamAssets.Texture.Handle,
-         GameAssets.JamAssets.Atlas.Handle,
+         GameAssets.Clockworld.Texture.Handle,
+         GameAssets.Clockworld.Atlas.Handle,
          Layers.Entities,
-         '0'
+         '32,32'
        ),
        UseSpriteRenderer,
        new Velocity(Vec2.ZERO),
-       new KineticBody(new Vec2(16, 16)),
+       //new KineticBody(new Vec2(16, 16)),
         new Weight(0),
        new WinFlag(),
        GameLoopCleanup,
