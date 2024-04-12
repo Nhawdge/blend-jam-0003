@@ -3,6 +3,7 @@
   <head>
     <title>Game</title>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       body {
         margin: 0;
@@ -25,9 +26,12 @@
   </head>
   <body>
     <div id="game"></div>
-    <div id="on-screen-controls"></div>
+    <div style="display: flex;">
+      <div id="on-screen-controls"></div>
+    </div>
   <style>
     #on-screen-controls {
+        margin: auto;
         display: grid;
         grid-template-columns: 1fr;
         gap: 20px;
@@ -35,8 +39,6 @@
         background-color: #f0f0f0;
         border: 1px solid #ccc;
         border-radius: 5px;
-        width: fit-content;
-        margin: 0 auto;
         
     }
 
@@ -67,6 +69,17 @@
     .on-screen-w:hover, .on-screen-s:hover, .on-screen-a:hover, .on-screen-d:hover, .on-screen-e:hover, .on-screen-space:hover {
         background-color: #e0e0e0;
     }
+
+    @media only screen and (max-width: 767px) {
+      /* Mobile styles */
+    .on-screen-w, .on-screen-s, .on-screen-a, .on-screen-d, .on-screen-e, .on-screen-space {
+      padding: 40px 45px;
+      font-size: 24px;
+    }
+    #on-screen-controls {
+      gap: 35px;
+    }
+}
   </style>
   </body>
 </html>
