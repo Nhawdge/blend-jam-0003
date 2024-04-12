@@ -19,7 +19,7 @@ export default class WalkingState extends BasePlayerState {
 
   protected onEnter(update: Update, components: { entity: number; player: Player; velocity: Velocity; animation: Animated; sprite: Sprite; body: KineticBody; }): void {
     const { animation } = components;
-    animation.tag = 'Walk';
+    animation.tag = 'Walk'; //TODO, need to check if this tag is correct.
   }
 
   protected onUpdate(update: Update, components: { entity: number; player: Player; input:MappedInput, velocity: Velocity; animation: Animated; sprite: Sprite; body: KineticBody; }): MachineState | undefined {
