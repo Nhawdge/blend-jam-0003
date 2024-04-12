@@ -7,12 +7,12 @@ import Renderer from "./Renderer";
 
 const quadTriangles = new Float32Array(
   [-0.5, -0.5,
-    0.5,  0.5,
+    0.5, 0.5,
     0.5, -0.5,
 
-   -0.5, -0.5,
-   -0.5,  0.5,
-    0.5,  0.5]
+  -0.5, -0.5,
+  -0.5, 0.5,
+    0.5, 0.5]
 );
 
 export type CreateRenderer = (system: RenderingSystem) => Renderer;
@@ -54,7 +54,7 @@ export default class RenderingSystem {
     this.createOnScreenControlls();
   }
 
-  
+
 
   initCanvas() {
     const gameDiv = document.getElementById('game')!;
@@ -131,8 +131,8 @@ export default class RenderingSystem {
     const divElement = document.getElementById('on-screen-controls');
 
     if (!divElement) {
-        console.error('Div element not found');
-        return;
+      console.error('Div element not found');
+      return;
     }
 
     this.createOnScreenKey("W", this.emulateKeyPress.bind(this, 'w'), this.emulateKeyUp.bind(this, 'w'), "on-screen-w", divElement);
@@ -141,37 +141,44 @@ export default class RenderingSystem {
     this.createOnScreenKey("D", this.emulateKeyPress.bind(this, 'd'), this.emulateKeyUp.bind(this, 'd'), "on-screen-d", divElement);
     this.createOnScreenKey("SPACE", this.emulateKeyPress.bind(this, 'space'), this.emulateKeyUp.bind(this, 'space'), "on-screen-space", divElement);
     this.createOnScreenKey("E", this.emulateKeyPress.bind(this, 'e'), this.emulateKeyUp.bind(this, 'e'), "on-screen-e", divElement);
-}
+  }
 
 
-private emulateKeyPress(key: string) {
+  private emulateKeyPress(key: string) {
     const event = new KeyboardEvent('keydown', {
-        key: key,
-        keyCode: key.charCodeAt(0), // Get the ASCII code of the key
-        bubbles: true,
+      key: key,
+      keyCode: key.charCodeAt(0), // Get the ASCII code of the key
+      bubbles: true,
     });
     document.dispatchEvent(event);
-}
+  }
 
-private emulateKeyUp(key: string) {
+  private emulateKeyUp(key: string) {
     const event = new KeyboardEvent('keyup', {
-        key: key,
-        keyCode: key.charCodeAt(0), // Get the ASCII code of the key
-        bubbles: true,
+      key: key,
+      keyCode: key.charCodeAt(0), // Get the ASCII code of the key
+      bubbles: true,
     });
     document.dispatchEvent(event);
-}
+  }
 
-private createOnScreenKey(keyText: string, keyDownFunction: EventListener, keyUpFunction: EventListener, keyClassName: string, parentElement: HTMLElement) {
-  const buttonElement = document.createElement('button');
-  buttonElement.classList.add(keyClassName);
-  buttonElement.textContent = keyText;
-  buttonElement.addEventListener('mousedown', keyDownFunction);
-  buttonElement.addEventListener('mouseup', keyUpFunction);
-  buttonElement.addEventListener('touchstart', keyDownFunction);
-  buttonElement.addEventListener('touchend', keyUpFunction);
-  parentElement.appendChild(buttonElement);
-}
+  private createOnScreenKey(keyText: string, keyDownFunction: EventListener, keyUpFunction: EventListener, keyClassName: string, parentElement: HTMLElement) {
+    const buttonElement = document.createElement('button');
+    buttonElement.classList.add(keyClassName);
+    buttonElement.textContent = keyText;
+    buttonElement.addEventListener('mousedown', keyDownFunction);
+    buttonElement.addEventListener('mouseup', keyUpFunction);
+    buttonElement.addEventListener('touchstart', keyDownFunction);
+    buttonElement.addEventListener('touchend', keyUpFunction);
+
+    buttonElement.addEventListener('contextmenu', (event) => {
+      event.preventDefault();
+    });
+
+    buttonElement.style.userSelect = 'none';
+    
+    parentElement.appendChild(buttonElement);
+  }
 
   draw(update: Update) {
     // Get a list of renderers that are ready to execute
