@@ -14,7 +14,7 @@ import PlayerActions from "../PlayerActions";
 /** Has methods and queries that all the player states use */
 export default abstract class BasePlayerState implements MachineState {
   readonly abstract updateImmediately: boolean;
-  readonly speed: number = 0.07 / ((1 / 60) * 1000);;
+  readonly speed: number = 0.035 / ((1 / 60) * 1000);;
   readonly drag: number = 0.8;
 
 
