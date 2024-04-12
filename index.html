@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title>Game</title>
+    <link rel="stylesheet" href="src/Styles/modal-styles.css">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -23,6 +24,7 @@
       @keyframes fix-image-rendering-bug {   from { opacity: 0.9999; }   to { opacity: 1; } }
     </style>
     <script type="module" src="src/index.ts"></script>
+    <script type="module" src="src/menu-modal.ts"></script>
   </head>
   <body>
     <div style="display: flex; justify-content: center;">
@@ -31,6 +33,24 @@
     <div style="display: flex;">
       <div id="on-screen-controls"></div>
     </div>
+
+    <div id="menu-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Echo Chronos: The Broken Timepiece</h1>
+        <p style="font-size: larger;">Dr. Richard O. Clock X puzzles through the broken world of Madigasclock trying to save his son Richard O. Clock XI</p>
+
+        <marquee style="font-size: large;">In a race against time, Dr. Richard O. Clock X harnesses a mystical microphone, reviving forgotten voices to restore the flow of time in Madigasclock.</marquee>
+        <ol>Seize control with these mind-bending navigational tools, charting a course to the heights of greatness and beyond!</ol>
+          <li class="list-nav-option">W: Up</li>
+          <li class="list-nav-option">A: Left</li>
+          <li class="list-nav-option">S: Down</li>
+          <li class="list-nav-option">D: Right</li>
+          <li class="list-nav-option">Space: Play music</li>
+          <li class="list-nav-option">E: Interact</li>
+      </div>
+    </div>
+
   <style>
     #on-screen-controls {
         margin: auto;
@@ -81,6 +101,7 @@
     #on-screen-controls {
       gap: 35px;
     }
+    
 }
   </style>
   </body>
