@@ -1,0 +1,18 @@
+{
+    "cSpell.words": [
+        "AABB",
+        "Despawn",
+        "Ldtk",
+        "tilemap",
+        "tilemaps",
+        "Tileset",
+        "tilesets",
+        "Tweens",
+        "unmap",
+        "unorm",
+        "webgpu",
+        "wgsl"
+    ],
+    "javascript.referencesCodeLens.enabled": true,
+    "typescript.referencesCodeLens.enabled": true
+}
