@@ -1,4 +1,3 @@
 export default {
-    StartLevelId: 0
-  }
-  
+  StartLevelId: 0
+}

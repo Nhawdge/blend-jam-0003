@@ -8,6 +8,7 @@ export default function AwaitLoaded(update: Update) {
 
   const isLoaded = GameAssets.IsLoaded(assets);
   if (isLoaded) {
+    GameAssets.LoadLevelTextures(assets);
     update.exit(LoadingState);
     update.signals.send(LoadedSignal);
   }
