@@ -1,109 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Echo Chronos: The Broken Timepiece</title>
-    <link rel="stylesheet" href="src/Styles/modal-styles.css">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      body {
-        margin: 0;
-        background-color: darkgrey;
+
+<head>
+  <title>Echo Chronos: The Broken Timepiece</title>
+  <link rel="stylesheet" href="src/Styles/modal-styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      background-color: darkgrey;
+    }
+
+    canvas {
+      width: 800px;
+      height: 800px;
+
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+
+      /* Fix Chrome bug https://stackoverflow.com/questions/69867152/how-to-disable-filtering-on-canvas-with-webgpu-context */
+      animation: fix-image-rendering-bug .0001s;
+    }
+
+    @keyframes fix-image-rendering-bug {
+      from {
+        opacity: 0.9999;
       }
-      canvas {
-        width: 800px;
-        height: 800px;
 
-        image-rendering: crisp-edges;
-        image-rendering: pixelated;
-
-        /* Fix Chrome bug https://stackoverflow.com/questions/69867152/how-to-disable-filtering-on-canvas-with-webgpu-context */
-        animation: fix-image-rendering-bug .0001s; 
+      to {
+        opacity: 1;
       }
+    }
+  </style>
+  <script type="module" src="src/index.ts"></script>
+  <script type="module" src="src/menu-modal.ts"></script>
+</head>
 
-      @keyframes fix-image-rendering-bug {   from { opacity: 0.9999; }   to { opacity: 1; } }
-    </style>
-    <script type="module" src="src/index.ts"></script>
-    <script type="module" src="src/menu-modal.ts"></script>
-  </head>
-  <body>
-    <div style="display: flex; justify-content: center;">
-      <div id="game"></div>
-    </div>
-    <div style="display: flex;">
-      <div id="on-screen-controls"></div>
-    </div>
+<body>
+  <div style="display: flex; justify-content: center;">
+    <div id="game"></div>
+  </div>
+  <div style="display: flex;">
+    <div id="on-screen-controls"></div>
+  </div>
 
-    <div id="menu-modal" class="modal">
-      <div class="modal-content">
-        <audio id="menuMusic" autoplay="true" controls src="public/assets/bgmusic.mp3"></audio>
-        <span class="close">&times;</span>
-        <h1>Echo Chronos: The Broken Timepiece</h1>
-        <p style="font-size: larger;">Dr. Richard O. Clock X puzzles through the broken world of Madigasclock trying to save his son Richard O. Clock XI</p>
+  <div id="menu-modal" class="modal">
+    <div class="modal-content">
 
-        <marquee style="font-size: large;">In a race against time, Dr. Richard O. Clock X harnesses a mystical microphone, reviving forgotten voices to restore the flow of time in Madigasclock.</marquee>
-        <ol>Seize control with these mind-bending navigational tools, charting a course to the heights of greatness and beyond!</ol>
-          <li class="list-nav-option">W: Up</li>
-          <li class="list-nav-option">A: Left</li>
-          <li class="list-nav-option">S: Down</li>
-          <li class="list-nav-option">D: Right</li>
-          <li class="list-nav-option">Space: Play music</li>
-          <li class="list-nav-option">E: Interact</li>
+      <audio id="menuMusic" autoplay="true" controls src="public/assets/titlemusic.opus"></audio>
+      <span class="close">&times;</span>
+      <div>
+        <div style="display: flex; justify-content: center;"><img
+            style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);"
+            src="public/assets/echo chronos.png" height="25%" width="50%" alt="Echo Chronos: The Broken Timepiece">
+        </div>
+        <p style="font-size: larger;">Dr. Richard O. Clock X puzzles through the broken world of Madigasclock trying to
+          save his son Richard O. Clock XI</p>
+        <marquee style="font-size: large;">In a race against time, Dr. Richard O. Clock X harnesses a mystical
+          microphone, reviving forgotten voices to restore the flow of time in Madigasclock.</marquee>
+        <ol>Seize control with these mind-bending navigational tools, charting a course to the heights of greatness and
+          beyond!</ol>
+        <li class="list-nav-option">W: Up</li>
+        <li class="list-nav-option">A: Left</li>
+        <li class="list-nav-option">S: Down</li>
+        <li class="list-nav-option">D: Right</li>
+        <li class="list-nav-option">Space: Play music</li>
+        <li class="list-nav-option">E: Interact</li>
       </div>
     </div>
+  </div>
 
   <style>
     #on-screen-controls {
-        margin: auto;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 10px;
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+
     }
 
-    .on-screen-w, .on-screen-s, .on-screen-a, .on-screen-d, .on-screen-e, .on-screen-space {
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 20px 25px;
-        font-size: 16px;
-        cursor: pointer;
+    .on-screen-w,
+    .on-screen-s,
+    .on-screen-a,
+    .on-screen-d,
+    .on-screen-e,
+    .on-screen-space {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px 25px;
+      font-size: 16px;
+      cursor: pointer;
     }
+
     .on-screen-w {
       grid-row: 1;
       grid-column: 2;
     }
-    .on-screen-s, .on-screen-a, .on-screen-d {
-        grid-row: 2;
+
+    .on-screen-s,
+    .on-screen-a,
+    .on-screen-d {
+      grid-row: 2;
     }
 
-    .on-screen-e, .on-screen-space {
-        grid-row: 3;
+    .on-screen-e,
+    .on-screen-space {
+      grid-row: 3;
     }
 
     .on-screen-space {
-        grid-column: span 2;
+      grid-column: span 2;
     }
 
-    .on-screen-w:hover, .on-screen-s:hover, .on-screen-a:hover, .on-screen-d:hover, .on-screen-e:hover, .on-screen-space:hover {
-        background-color: #e0e0e0;
+    .on-screen-w:hover,
+    .on-screen-s:hover,
+    .on-screen-a:hover,
+    .on-screen-d:hover,
+    .on-screen-e:hover,
+    .on-screen-space:hover {
+      background-color: #e0e0e0;
     }
 
     @media only screen and (max-width: 767px) {
+
       /* Mobile styles */
-    .on-screen-w, .on-screen-s, .on-screen-a, .on-screen-d, .on-screen-e, .on-screen-space {
-      padding: 40px 45px;
-      font-size: 24px;
+      .on-screen-w,
+      .on-screen-s,
+      .on-screen-a,
+      .on-screen-d,
+      .on-screen-e,
+      .on-screen-space {
+        padding: 40px 45px;
+        font-size: 24px;
+      }
+
+      #on-screen-controls {
+        gap: 35px;
+      }
+
     }
-    #on-screen-controls {
-      gap: 35px;
-    }
-    
-}
   </style>
-  </body>
+</body>
+
 </html>

@@ -71,22 +71,19 @@ export default abstract class BasePlayerState implements MachineState {
 
     if (player.controlsEnabled && left) {
       newVel = newVel.add(new Vec2(-this.speed * delta, 0));
-      sprite.scale = new Vec2(1, 1);
-      //animation.tag = "PlayerDown";
-      isMoving = true;
-
+      sprite.scale = new Vec2(-1, 1);
+      animation.tag = "PlayerSide";
+      isMoving = true;      
     }
     if (player.controlsEnabled && right) {
       newVel = newVel.add(new Vec2(this.speed * delta, 0));
-      sprite.scale = new Vec2(-1, 1);
-      //animation.tag = "PlayerDown";
+      sprite.scale = new Vec2(1, 1);
+      animation.tag = "PlayerSide";
       isMoving = true;
-
     }
     if (player.controlsEnabled && up) {
       newVel = newVel.add(new Vec2(0, this.speed * delta));
       animation.tag = "PlayerUp";
-
       isMoving = true;
     }
     if (player.controlsEnabled && down) {

@@ -1,5 +1,4 @@
 import LdtkData from "../../../2B2D/Assets/LdtkData";
-import Animated from "../../../2B2D/Components/Animated";
 import KineticBody from "../../../2B2D/Components/KineticBody";
 import Position from "../../../2B2D/Components/Position";
 import Sprite from "../../../2B2D/Components/Sprite";
@@ -30,16 +29,15 @@ export default function SpawnWinFlag(update: Update) {
    update.spawn([
        new Position(position),
        new Sprite(
-         GameAssets.JamAssets.Texture.Handle,
-         GameAssets.JamAssets.Atlas.Handle,
+         GameAssets.Clockworld.Texture.Handle,
+         GameAssets.Clockworld.Atlas.Handle,
          Layers.Entities,
-         '0'
+         '32,32'
        ),
        UseSpriteRenderer,
        new Velocity(Vec2.ZERO),
         new Weight(0),
        new WinFlag(),
        GameLoopCleanup,
-       new Animated('WinFlag')
    ]);   
 }
