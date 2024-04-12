@@ -50,11 +50,11 @@
 			"${1:assetname}: {",
 				"\tTexture: {",
 				  "\tHandle: '${2:name}-texture',",
-				  "\tLoad: () => loadTextureAsset(${3:path}, '${2:name}-texture')",
+				  "\tLoad: () => loadTextureAsset('${2:name}-texture', '${3:path}.png')",
 				"},",
 				"Atlas: {",
 				  "\tHandle: '${2:name}-atlas',",
-				  "\tLoad: () => loadSpriteAtlasAsset(${3:path}, '${2:name}-atlas')",
+				  "\tLoad: () => loadSpriteAtlasAsset('${2:name}-atlas', '${3:path}.json')",
 				"}",
 			"}"
 		]

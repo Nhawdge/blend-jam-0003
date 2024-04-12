@@ -12,4 +12,6 @@ export default function InitPlugin(builder: Builder) {
   builder.layer(Layers.FG);
   builder.layer(Layers.Entities);
   builder.layer(Layers.Hud);
+
+  builder.startState(LoadingState);
 }
