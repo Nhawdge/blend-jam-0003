@@ -32,7 +32,7 @@ const GameAssets = {
     },
     Atlas: {
       Handle: 'clockworld-atlas',
-      Load: () => generateTiledSpriteAtlas('clockworld-atlas', new Vec2(32,32), new Vec2(3,3), new Vec2(0,0))
+      Load: () => generateTiledSpriteAtlas(GameAssets.Clockworld.Atlas.Handle, new Vec2(32,32), new Vec2(3,3), new Vec2(0,0))
     }
   },
   Load: (assets: AssetsResource) => {
