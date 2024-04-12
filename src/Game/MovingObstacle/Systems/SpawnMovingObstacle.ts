@@ -38,7 +38,7 @@ export default function SpawnMovingObstacle(update: Update) {
         /* TODO: add the spawn once we have textures from LDTK, from GameAssets.ts
         */
         update.spawn([
-            new Position(position),
+            new Position(position.add(new Vec2(16, -16))),
             new Sprite(
                 GameAssets.JamAssets.Texture.Handle,
                 GameAssets.JamAssets.Atlas.Handle,
