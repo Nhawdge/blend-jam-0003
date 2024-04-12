@@ -6,10 +6,6 @@ import PlayerPlugin from "./Player/PlayerPlugin";
 import MovingWallPlugin from "./MovingWall/MovingWallPlugin";
 
 export default function GamePlugin(builder: Builder) {
-  Layers.add(builder);
-
-  builder.resource(new GameStateResouce());
-
   // Init plugin loads stuff, spawns camera, etc.
   builder.plugin(InitPlugin);
 
