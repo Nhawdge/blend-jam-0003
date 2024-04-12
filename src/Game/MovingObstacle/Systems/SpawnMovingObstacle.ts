@@ -13,11 +13,11 @@ import GameAssets from "../../GameAssets";
 import GameLoopCleanup from "../../GameLoop/Components/GameLoopCleanup";
 import GameStateResouce from "../../GameStateResource";
 import Layers from "../../Layers";
-import MovingGhost from "../Components/MovingGhost";
+import MovingObstacle from "../Components/MovingObstacle";
 import IdleState from "../Machines/IdleState";
 
 
-export default function SpawnMovingGhost(update: Update) {
+export default function SpawnMovingObstacle(update: Update) {
     const gameState = update.resource<GameStateResouce>(GameStateResouce.NAME);
     const assets = update.assets();
 
@@ -26,9 +26,9 @@ export default function SpawnMovingGhost(update: Update) {
     const levelName = `Level_${gameState.level}`;
     const level = ldtk.levels.find(x => x.identifier == levelName)!;
     const entities = level.layerInstances.find(x => x.__identifier == 'Entities')!;
-    const movingGhost = entities.entityInstances.find(x => x.__identifier == 'name here')!; // TODO get the entitiy name from ldtk
+    const movingObstacle = entities.entityInstances.find(x => x.__identifier == 'name here')!; // TODO get the entitiy name from ldtk
     const offset = new Vec2(level.pxWid, level.pxHei).scalarMultiply(-0.5);
-    const position = new Vec2(movingGhost.px[0], level.pxHei - movingGhost.px[1]).add(offset);
+    const position = new Vec2(movingObstacle.px[0], level.pxHei - movingObstacle.px[1]).add(offset);
 
     /* TODO: add the spawn once we have textures from LDTK, from GameAssets.ts
     */
@@ -43,7 +43,7 @@ export default function SpawnMovingGhost(update: Update) {
        new Velocity(Vec2.ZERO),
        new KineticBody(new Vec2(16, 16)),
        new Weight(0), // Turn off gravity.
-       new MovingGhost(),
+       new MovingObstacle(),
        GameLoopCleanup,
        new StateMachine(IdleState.Instance),
    ]);   
