@@ -5,11 +5,11 @@ import Sprite from "../../../2B2D/Components/Sprite";
 import Velocity from "../../../2B2D/Components/Velocity";
 import MachineState from "../../../2B2D/MachineState";
 import Update from "../../../2B2D/Update";
-import MovingGhost from "../Components/MovingGhost";
-import BaseMovingGhostState from "./BaseMovingGhostState";
+import MovingObstacle from "../Components/MovingObstacle";
+import BaseMovingObstacleState from "./BaseMovingObstacleState";
 import IdleState from "./IdleState";
 
-export default class MovingState extends BaseMovingGhostState {
+export default class MovingState extends BaseMovingObstacleState {
   readonly updateImmediately = true;
 
   private constructor() { super(); }
@@ -17,13 +17,13 @@ export default class MovingState extends BaseMovingGhostState {
   public static readonly Instance = new MovingState();
 
 
-  protected onEnter(update: Update, components: { entity: number; movingGhost: MovingGhost; velocity: Velocity; animation: Animated; sprite: Sprite; body: KineticBody; }): void {
+  protected onEnter(update: Update, components: { entity: number; movingObstacle: MovingObstacle; velocity: Velocity; animation: Animated; sprite: Sprite; body: KineticBody; }): void {
     const { animation } = components;
     animation.tag = 'Move';
   }
 
-  protected onUpdate(update: Update, components: { entity: number; movingGhost: MovingGhost; input:MappedInput, velocity: Velocity; animation: Animated; sprite: Sprite; body: KineticBody; }): MachineState | undefined {
-    const { body, movingGhost } = components;
+  protected onUpdate(update: Update, components: { entity: number; movingObstacle: MovingObstacle; input:MappedInput, velocity: Velocity; animation: Animated; sprite: Sprite; body: KineticBody; }): MachineState | undefined {
+    const { body, movingObstacle } = components;
     // TODO, handle changing state.
 
     this.applyVelocity(update, components);
