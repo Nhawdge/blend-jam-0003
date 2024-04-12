@@ -57,6 +57,8 @@ const GameAssets = {
     for (const level of ldtk.levels) {
       const t = GameAssets.Clockworld.Tilemap.Handle(level.identifier, 'Tiles');
       assets.add(createTilemapFromLdtkJson(t, ldtk, level.identifier, 'Tiles', 0));
+      const bg = GameAssets.Clockworld.Tilemap.Handle(level.identifier, 'Background');
+      assets.add(createTilemapFromLdtkJson(bg, ldtk, level.identifier, 'Background', 0));
     }
   }
 }

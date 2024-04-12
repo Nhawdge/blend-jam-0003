@@ -15,10 +15,15 @@ export default function SpawnLevel(update: Update) {
   const gamestate = update.resource<GameStateResouce>(GameStateResouce.NAME);
 
   const levelId = GameAssets.Clockworld.Tilemap.LevelName(gamestate.level);
-  const handle = GameAssets.Clockworld.Tilemap.Handle(levelId, 'Tiles');
+  const tileHandle = GameAssets.Clockworld.Tilemap.Handle(levelId, 'Tiles');
+  const backgroundHandle = GameAssets.Clockworld.Tilemap.Handle(levelId, 'Background');
 
   update.spawn([
-    new Tilemap(Layers.BG, GameAssets.Clockworld.Texture.Handle, handle),
+    new Tilemap(Layers.FG, GameAssets.Clockworld.Texture.Handle, tileHandle),
+    Position.fromXY(0, 0)
+  ]);
+  update.spawn([
+    new Tilemap(Layers.BG, GameAssets.Clockworld.Texture.Handle, backgroundHandle),
     Position.fromXY(0, 0)
   ]);
 
