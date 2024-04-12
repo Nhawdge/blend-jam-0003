@@ -424,22 +424,6 @@
 					"gridTiles": [],
 					"entityInstances": [
 						{
-							"__identifier": "WinFlag",
-							"__grid": [22,3],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 1, "x": 32, "y": 32, "w": 32, "h": 32 },
-							"__smartColor": "#D77643",
-							"iid": "89b0ee90-d7b0-11ee-8645-47f495d1708a",
-							"width": 32,
-							"height": 32,
-							"defUid": 4,
-							"px": [704,96],
-							"fieldInstances": [],
-							"__worldX": 704,
-							"__worldY": 96
-						},
-						{
 							"__identifier": "Player",
 							"__grid": [11,7],
 							"__pivot": [0,0],
@@ -454,22 +438,6 @@
 							"fieldInstances": [],
 							"__worldX": 352,
 							"__worldY": 224
-						},
-						{
-							"__identifier": "WinFlag",
-							"__grid": [2,1],
-							"__pivot": [0,0],
-							"__tags": [],
-							"__tile": { "tilesetUid": 1, "x": 32, "y": 32, "w": 32, "h": 32 },
-							"__smartColor": "#D77643",
-							"iid": "966ba710-d7b0-11ee-bae7-a3092495e177",
-							"width": 32,
-							"height": 32,
-							"defUid": 4,
-							"px": [64,32],
-							"fieldInstances": [],
-							"__worldX": 64,
-							"__worldY": 32
 						},
 						{
 							"__identifier": "MovingObstacle",
@@ -489,6 +457,22 @@
 							}] }],
 							"__worldX": 32,
 							"__worldY": 128
+						},
+						{
+							"__identifier": "WinFlag",
+							"__grid": [2,1],
+							"__pivot": [0,0],
+							"__tags": [],
+							"__tile": { "tilesetUid": 1, "x": 32, "y": 32, "w": 32, "h": 32 },
+							"__smartColor": "#D77643",
+							"iid": "bb8f4f50-d7b0-11ee-bdd7-59c8b396afa3",
+							"width": 32,
+							"height": 32,
+							"defUid": 4,
+							"px": [64,32],
+							"fieldInstances": [],
+							"__worldX": 64,
+							"__worldY": 32
 						}
 					]
 				},
@@ -2848,7 +2832,10 @@
 							"height": 32,
 							"defUid": 9,
 							"px": [480,96],
-							"fieldInstances": [{ "__identifier": "SlideTo", "__type": "Point", "__value": null, "__tile": null, "defUid": 10, "realEditorValues": [] }],
+							"fieldInstances": [{ "__identifier": "SlideTo", "__type": "Point", "__value": { "cx": 14, "cy": 3 }, "__tile": null, "defUid": 10, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["14,3"]
+							}] }],
 							"__worldX": 480,
 							"__worldY": 1472
 						},
@@ -2864,7 +2851,10 @@
 							"height": 32,
 							"defUid": 9,
 							"px": [672,32],
-							"fieldInstances": [{ "__identifier": "SlideTo", "__type": "Point", "__value": null, "__tile": null, "defUid": 10, "realEditorValues": [] }],
+							"fieldInstances": [{ "__identifier": "SlideTo", "__type": "Point", "__value": { "cx": 23, "cy": 1 }, "__tile": null, "defUid": 10, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["23,1"]
+							}] }],
 							"__worldX": 672,
 							"__worldY": 1408
 						},
@@ -2880,7 +2870,10 @@
 							"height": 32,
 							"defUid": 9,
 							"px": [672,416],
-							"fieldInstances": [{ "__identifier": "SlideTo", "__type": "Point", "__value": null, "__tile": null, "defUid": 10, "realEditorValues": [] }],
+							"fieldInstances": [{ "__identifier": "SlideTo", "__type": "Point", "__value": { "cx": 19, "cy": 13 }, "__tile": null, "defUid": 10, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["19,13"]
+							}] }],
 							"__worldX": 672,
 							"__worldY": 1792
 						},
@@ -2896,7 +2889,10 @@
 							"height": 32,
 							"defUid": 9,
 							"px": [448,224],
-							"fieldInstances": [{ "__identifier": "SlideTo", "__type": "Point", "__value": null, "__tile": null, "defUid": 10, "realEditorValues": [] }],
+							"fieldInstances": [{ "__identifier": "SlideTo", "__type": "Point", "__value": { "cx": 11, "cy": 7 }, "__tile": null, "defUid": 10, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["11,7"]
+							}] }],
 							"__worldX": 448,
 							"__worldY": 1600
 						},
@@ -2912,7 +2908,10 @@
 							"height": 32,
 							"defUid": 9,
 							"px": [384,160],
-							"fieldInstances": [{ "__identifier": "SlideTo", "__type": "Point", "__value": null, "__tile": null, "defUid": 10, "realEditorValues": [] }],
+							"fieldInstances": [{ "__identifier": "SlideTo", "__type": "Point", "__value": { "cx": 15, "cy": 5 }, "__tile": null, "defUid": 10, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["15,5"]
+							}] }],
 							"__worldX": 384,
 							"__worldY": 1536
 						},
@@ -2928,7 +2927,10 @@
 							"height": 32,
 							"defUid": 9,
 							"px": [352,320],
-							"fieldInstances": [{ "__identifier": "SlideTo", "__type": "Point", "__value": null, "__tile": null, "defUid": 10, "realEditorValues": [] }],
+							"fieldInstances": [{ "__identifier": "SlideTo", "__type": "Point", "__value": { "cx": 13, "cy": 10 }, "__tile": null, "defUid": 10, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["13,10"]
+							}] }],
 							"__worldX": 352,
 							"__worldY": 1696
 						},
@@ -2944,7 +2946,10 @@
 							"height": 32,
 							"defUid": 9,
 							"px": [96,288],
-							"fieldInstances": [{ "__identifier": "SlideTo", "__type": "Point", "__value": null, "__tile": null, "defUid": 10, "realEditorValues": [] }],
+							"fieldInstances": [{ "__identifier": "SlideTo", "__type": "Point", "__value": { "cx": 3, "cy": 1 }, "__tile": null, "defUid": 10, "realEditorValues": [{
+								"id": "V_String",
+								"params": ["3,1"]
+							}] }],
 							"__worldX": 96,
 							"__worldY": 1664
 						}
