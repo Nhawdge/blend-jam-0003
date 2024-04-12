@@ -1,9 +1,9 @@
 import Builder from "../2B2D/Builder";
-import GameStateResouce from "./GameStateResource";
+import LevelPlugin from "./Level/LevelPlugin";
 import InitPlugin from "./Init/InitPlugin";
-import Layers from "./Layers";
-import MovingWallPlugin from "./MovingWall/MovingWallPlugin";
+import GameLoopPlugin from "./GameLoop/GameLoopPlugin";
 import PlayerPlugin from "./Player/PlayerPlugin";
+import MovingWallPlugin from "./MovingWall/MovingWallPlugin";
 
 export default function GamePlugin(builder: Builder) {
   Layers.add(builder);
@@ -23,4 +23,7 @@ export default function GamePlugin(builder: Builder) {
   
   */
 
+  
+  builder.plugin(LevelPlugin);
+  builder.plugin(GameLoopPlugin);
 }
