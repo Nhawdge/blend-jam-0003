@@ -14,30 +14,32 @@ import Layers from "../../Layers";
 import WinFlag from "../Components/WinFlag";
 
 export default function SpawnWinFlag(update: Update) {
-    const gameState = update.resource<GameStateResouce>(GameStateResouce.NAME);
-    const assets = update.assets();
+  const gameState = update.resource<GameStateResouce>(GameStateResouce.NAME);
+  const assets = update.assets();
 
   const ldtk = assets.assume<LdtkData>(GameAssets.Clockworld.Ldtk.Handle);
 
   const levelName = GameAssets.Clockworld.Tilemap.LevelName(gameState.level);
-    const level = ldtk.levels.find(x => x.identifier == levelName)!;
-    const entities = level.layerInstances.find(x => x.__identifier == 'Entities')!;
-  const winFlag = entities.entityInstances.find(x => x.__identifier == 'WinFlag')!;
+  const level = ldtk.levels.find(x => x.identifier == levelName)!;
+  const entities = level.layerInstances.find(x => x.__identifier == 'Entities')!;
+  const flags = entities.entityInstances.filter(x => x.__identifier == 'WinFlag')!;
+  for (const flag of flags) {
     const offset = new Vec2(level.pxWid, level.pxHei).scalarMultiply(-0.5);
-    const position = new Vec2(winFlag.px[0], level.pxHei - winFlag.px[1]).add(offset);
+    const position = new Vec2(flag.px[0], level.pxHei - flag.px[1]).add(offset);
 
-   update.spawn([
-       new Position(position),
-       new Sprite(
-         GameAssets.Clockworld.Texture.Handle,
-         GameAssets.Clockworld.Atlas.Handle,
-         Layers.Entities,
-         '32,32'
-       ),
-       UseSpriteRenderer,
-       new Velocity(Vec2.ZERO),
-        new Weight(0),
-       new WinFlag(),
-       GameLoopCleanup,
-   ]);   
+    update.spawn([
+      new Position(position.add(new Vec2(16, -16))),
+        new Sprite(
+          GameAssets.Clockworld.Texture.Handle,
+          GameAssets.Clockworld.Atlas.Handle,
+          Layers.Entities,
+          '32,32'
+        ),
+        UseSpriteRenderer,
+        new Velocity(Vec2.ZERO),
+          new Weight(0),
+        new WinFlag(),
+        GameLoopCleanup,
+    ]);
+  }
 }
