@@ -13,38 +13,34 @@ import GameAssets from "../../GameAssets";
 import GameLoopCleanup from "../../GameLoop/Components/GameLoopCleanup";
 import GameStateResouce from "../../GameStateResource";
 import Layers from "../../Layers";
-import MovingGhost from "../Components/MovingGhost";
-import IdleState from "../Machines/IdleState";
+import WinFlag from "../Components/WinFlag";
 
-
-export default function SpawnMovingGhost(update: Update) {
+export default function SpawnWinFlag(update: Update) {
     const gameState = update.resource<GameStateResouce>(GameStateResouce.NAME);
     const assets = update.assets();
 
-    const ldtk = assets.assume<LdtkData>(GameAssets.LevelData.LdtkData.Handle);
+  const ldtk = assets.assume<LdtkData>(GameAssets.Clockworld.Ldtk.Handle);
 
-    const levelName = `Level_${gameState.level}`;
+  const levelName = GameAssets.Clockworld.Tilemap.LevelName(gameState.level);
     const level = ldtk.levels.find(x => x.identifier == levelName)!;
     const entities = level.layerInstances.find(x => x.__identifier == 'Entities')!;
-    const movingGhost = entities.entityInstances.find(x => x.__identifier == 'name here')!; // TODO get the entitiy name from ldtk
+  const winFlag = entities.entityInstances.find(x => x.__identifier == 'WinFlag')!;
     const offset = new Vec2(level.pxWid, level.pxHei).scalarMultiply(-0.5);
-    const position = new Vec2(movingGhost.px[0], level.pxHei - movingGhost.px[1]).add(offset);
+    const position = new Vec2(winFlag.px[0], level.pxHei - winFlag.px[1]).add(offset);
 
-    /* TODO: add the spawn once we have textures from LDTK, from GameAssets.ts
-    */
-   update.spawn([
+   update.spawn([ //TODO review
        new Position(position),
        new Sprite(
-       GameAssets.LevelData.Paddles.Texture.Handle,
-       GameAssets.LevelData.Paddles.Atlas.Handle,
-       Layers.Entities,
+         GameAssets.JamAssets.Texture.Handle,
+         GameAssets.JamAssets.Atlas.Handle,
+         Layers.Entities,
+         '0'
        ),
        UseSpriteRenderer,
        new Velocity(Vec2.ZERO),
        new KineticBody(new Vec2(16, 16)),
-       new Weight(0), // Turn off gravity.
-       new MovingGhost(),
+        new Weight(0),
+       new WinFlag(),
        GameLoopCleanup,
-       new StateMachine(IdleState.Instance),
    ]);   
 }
