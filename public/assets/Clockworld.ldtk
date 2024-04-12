@@ -253,7 +253,7 @@
 			"fieldDefs": []
 		},
 		{
-			"identifier": "MovingWall",
+			"identifier": "MovingObstacle",
 			"uid": 9,
 			"tags": [],
 			"exportToToc": false,
@@ -472,7 +472,7 @@
 							"__worldY": 32
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [1,4],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -829,7 +829,7 @@
 							"__worldY": 544
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [4,2],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -848,7 +848,7 @@
 							"__worldY": 416
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [5,2],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -867,7 +867,7 @@
 							"__worldY": 416
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [7,2],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -886,7 +886,7 @@
 							"__worldY": 416
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [6,2],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -905,7 +905,7 @@
 							"__worldY": 416
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [8,2],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -924,7 +924,7 @@
 							"__worldY": 416
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [6,9],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -943,7 +943,7 @@
 							"__worldY": 640
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [10,6],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -962,7 +962,7 @@
 							"__worldY": 544
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [8,9],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -981,7 +981,7 @@
 							"__worldY": 640
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [10,9],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1443,7 +1443,7 @@
 							"__worldY": 1024
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [16,7],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1462,7 +1462,7 @@
 							"__worldY": 960
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [16,12],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1481,7 +1481,7 @@
 							"__worldY": 1120
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [21,3],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1500,7 +1500,7 @@
 							"__worldY": 832
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [19,4],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1519,7 +1519,7 @@
 							"__worldY": 864
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [12,6],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1538,7 +1538,7 @@
 							"__worldY": 928
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [18,16],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1557,7 +1557,7 @@
 							"__worldY": 1248
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [23,3],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1576,7 +1576,7 @@
 							"__worldY": 832
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [20,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1592,7 +1592,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [19,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1608,7 +1608,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [18,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1624,7 +1624,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [16,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1640,7 +1640,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [17,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1656,7 +1656,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [15,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1672,7 +1672,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [14,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1688,7 +1688,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [13,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1704,7 +1704,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [12,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1720,7 +1720,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [11,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1736,7 +1736,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [10,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1752,7 +1752,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [9,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1768,7 +1768,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [7,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1784,7 +1784,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [8,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1800,7 +1800,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [5,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1816,7 +1816,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [6,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1832,7 +1832,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [4,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1848,7 +1848,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [3,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1864,7 +1864,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [2,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1880,7 +1880,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [1,1],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1896,7 +1896,7 @@
 							"__worldY": 768
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [1,8],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1915,7 +1915,7 @@
 							"__worldY": 992
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [9,10],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1934,7 +1934,7 @@
 							"__worldY": 1056
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [1,12],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1953,7 +1953,7 @@
 							"__worldY": 1120
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [9,14],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1972,7 +1972,7 @@
 							"__worldY": 1184
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [23,13],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -1991,7 +1991,7 @@
 							"__worldY": 1152
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [20,16],
 							"__pivot": [0,0],
 							"__tags": [],
@@ -2026,7 +2026,7 @@
 							"__worldY": 1152
 						},
 						{
-							"__identifier": "MovingWall",
+							"__identifier": "MovingObstacle",
 							"__grid": [20,11],
 							"__pivot": [0,0],
 							"__tags": [],
