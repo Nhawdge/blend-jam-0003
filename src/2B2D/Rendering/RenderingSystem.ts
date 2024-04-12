@@ -139,7 +139,7 @@ export default class RenderingSystem {
     this.createOnScreenKey("A", this.emulateKeyPress.bind(this, 'a'), this.emulateKeyUp.bind(this, 'a'), "on-screen-a", divElement);
     this.createOnScreenKey("S", this.emulateKeyPress.bind(this, 's'), this.emulateKeyUp.bind(this, 's'), "on-screen-s", divElement);
     this.createOnScreenKey("D", this.emulateKeyPress.bind(this, 'd'), this.emulateKeyUp.bind(this, 'd'), "on-screen-d", divElement);
-    this.createOnScreenKey("SPACE", this.emulateKeyPress.bind(this, 'space'), this.emulateKeyUp.bind(this, 'space'), "on-screen-space", divElement);
+    this.createOnScreenKey("SPACE", this.emulateKeyPress.bind(this, ' '), this.emulateKeyUp.bind(this, ' '), "on-screen-space", divElement);
     this.createOnScreenKey("E", this.emulateKeyPress.bind(this, 'e'), this.emulateKeyUp.bind(this, 'e'), "on-screen-e", divElement);
   }
 
