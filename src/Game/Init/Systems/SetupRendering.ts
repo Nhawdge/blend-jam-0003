@@ -1,4 +1,5 @@
 import Camera from "../../../2B2D/Components/Camera";
+import Parent from "../../../2B2D/Components/Parent";
 import Position from "../../../2B2D/Components/Position";
 import RenderGradients from "../../../2B2D/Rendering/GradientRenderer";
 import RenderSprites from "../../../2B2D/Rendering/SpriteRenderer";
@@ -14,7 +15,8 @@ export default function SetupRendering(update: Update) {
 
   update.spawn([
     Camera,
-    Position.fromXY(0, 0)
+    Position.fromXY(0, 0),
+    new Parent(parent)
   ]);
 
   update.addRenderer(RenderSprites);

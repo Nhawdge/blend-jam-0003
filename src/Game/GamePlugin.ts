@@ -9,10 +9,11 @@ export default function GamePlugin(builder: Builder) {
   // Init plugin loads stuff, spawns camera, etc.
   builder.plugin(InitPlugin);
 
+  builder.plugin(PlayerPlugin);
+
   /*
   
   // Player plugin
-  builder.plugin(PlayerPlugin);
 
   // moving wall plugin (obstacles that the player must avoid)
   builder.plugin(MovingGhostPlugin);
