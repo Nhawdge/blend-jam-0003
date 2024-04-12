@@ -30,7 +30,7 @@ export default class RenderingSystem {
   sampler!: GPUSampler;
 
   width = 800;
-  height = 600;
+  height = 800;
   zoom = 8;
 
 
