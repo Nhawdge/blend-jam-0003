@@ -66,7 +66,7 @@ export default function SpawnPlayer(update: Update) {
        UseSpriteRenderer,
        new Velocity(Vec2.ZERO),
        new KineticBody(new Vec2(10, 15)),
-     new Weight(0),
+       new Weight(0),
        new Player(),
        GameLoopCleanup,
        new StateMachine(IdleState.Instance),

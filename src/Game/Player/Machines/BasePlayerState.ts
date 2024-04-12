@@ -59,30 +59,44 @@ export default abstract class BasePlayerState implements MachineState {
     return this.onUpdate(update, player);
   }
 
-  applyLeftAndRightVelocity(update: Update, components: { input: MappedInput, velocity: Velocity, player: Player, sprite: Sprite }) {
+  applyLeftAndRightVelocity(update: Update, components: { input: MappedInput, velocity: Velocity, player: Player, animation: Animated, sprite: Sprite, }) {
     const { left, right, up, down } = this.getKeys(update, components);
 
-    const { velocity, player, sprite } = components;
+    const { velocity, player, sprite, animation } = components;
 
     const delta = update.delta();
 
     let newVel = velocity.velocity;
-    
+    var isMoving = false;
+
     if (player.controlsEnabled && left) {
       newVel = newVel.add(new Vec2(-this.speed * delta, 0));
       sprite.scale = new Vec2(1, 1);
+      //animation.tag = "PlayerDown";
+      isMoving = true;
+
     }
     if (player.controlsEnabled && right) {
       newVel = newVel.add(new Vec2(this.speed * delta, 0));
       sprite.scale = new Vec2(-1, 1);
+      //animation.tag = "PlayerDown";
+      isMoving = true;
+
     }
     if (player.controlsEnabled && up) {
       newVel = newVel.add(new Vec2(0, this.speed * delta));
+      animation.tag = "PlayerUp";
+
+      isMoving = true;
     }
     if (player.controlsEnabled && down) {
       newVel = newVel.add(new Vec2(0, -this.speed * delta));
+      animation.tag = "PlayerDown";
+      isMoving = true;
     }
-
+    if (!isMoving) {
+      animation.tag = "PlayerIdle";
+    }
     velocity.velocity = newVel.scalarMultiply(this.drag);
   }
 }
