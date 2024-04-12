@@ -35,19 +35,23 @@ export default function SpawnPlayer(update: Update) {
     const inputMap = MappedInput.build(0, b => {
         b.for(PlayerActions.Up, a => {
           a.keyboard('w');
-          a.keyboard('W'); // Whoops! Capslock is on.
+          a.keyboard('W');
+          a.keyboard('ArrowUp');
         });
         b.for(PlayerActions.Down, a => {
           a.keyboard('s');
           a.keyboard('S');
+          a.keyboard('ArrowDown');
         });
         b.for(PlayerActions.Left, a => {
             a.keyboard('a');
             a.keyboard('A');
+            a.keyboard('ArrowLeft');
         });
         b.for(PlayerActions.Right, a => {
             a.keyboard('d');
             a.keyboard('D');
+            a.keyboard('ArrowRight');
         })
     });
 
@@ -61,7 +65,7 @@ export default function SpawnPlayer(update: Update) {
        ),
        UseSpriteRenderer,
        new Velocity(Vec2.ZERO),
-       new KineticBody(new Vec2(30, 30)),
+       new KineticBody(new Vec2(10, 15)),
      new Weight(0),
        new Player(),
        GameLoopCleanup,
