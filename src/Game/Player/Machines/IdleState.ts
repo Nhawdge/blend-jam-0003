@@ -19,7 +19,7 @@ export default class IdleState extends BasePlayerState {
 
   protected onEnter(update: Update, components: { entity: number; player: Player; velocity: Velocity; animation: Animated; sprite: Sprite; body: KineticBody; }): void {
     const { animation } = components;
-    animation.tag = 'Idle';
+    animation.tag = 'Idle'; //TODO, need to check if this tag is correct.
   }
 
   protected onUpdate(update: Update, components: { entity: number; player: Player; input: MappedInput, velocity: Velocity; animation: Animated; sprite: Sprite; body: KineticBody; }): MachineState | undefined {
