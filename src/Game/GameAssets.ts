@@ -1,8 +1,9 @@
 import loadJsonAsset from "../2B2D/Assets/JsonAsset";
 import LdtkData from "../2B2D/Assets/LdtkData";
-import loadSpriteAtlasAsset from "../2B2D/Assets/SpriteAtlasAsset";
+import loadSpriteAtlasAsset, { generateTiledSpriteAtlas } from "../2B2D/Assets/SpriteAtlasAsset";
 import loadTextureAsset from "../2B2D/Assets/TextureAsset";
 import createTilemapFromLdtkJson from "../2B2D/Assets/TilemapData";
+import Vec2 from "../2B2D/Math/Vec2";
 import AssetsResource from "../2B2D/Resources/AssetsResource";
 
 const GameAssets = {
@@ -28,6 +29,10 @@ const GameAssets = {
     Tilemap: {
       Handle: (id:string, layer:string) => `clockworld-tilemap-${id}-${layer}`,
       LevelName: (id:number) => `Level_${id}`
+    },
+    Atlas: {
+      Handle: 'clockworld-atlas',
+      Load: () => generateTiledSpriteAtlas(GameAssets.Clockworld.Atlas.Handle, new Vec2(32,32), new Vec2(3,3), new Vec2(0,0))
     }
   },
   Load: (assets: AssetsResource) => {
@@ -35,6 +40,7 @@ const GameAssets = {
     assets.add(GameAssets.JamAssets.Atlas.Load());
     assets.add(GameAssets.Clockworld.Texture.Load());
     assets.add(GameAssets.Clockworld.Ldtk.Load());
+    assets.add(GameAssets.Clockworld.Atlas.Load());
   },
   IsLoaded: (assets: AssetsResource) => {
     return assets.loaded([
@@ -42,6 +48,7 @@ const GameAssets = {
       GameAssets.JamAssets.Atlas.Handle,
       GameAssets.Clockworld.Texture.Handle,
       GameAssets.Clockworld.Ldtk.Handle,
+      GameAssets.Clockworld.Atlas.Handle
     ]);
   },
   LoadLevelTextures: (assets: AssetsResource) => {

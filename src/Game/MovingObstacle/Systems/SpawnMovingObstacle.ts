@@ -1,4 +1,5 @@
 import LdtkData from "../../../2B2D/Assets/LdtkData";
+import { SpriteAtlas } from "../../../2B2D/Assets/SpriteAtlasAsset";
 import KineticBody from "../../../2B2D/Components/KineticBody";
 import MappedInput from "../../../2B2D/Components/MappedInput";
 import Position from "../../../2B2D/Components/Position";
@@ -21,12 +22,12 @@ export default function SpawnMovingObstacle(update: Update) {
     const gameState = update.resource<GameStateResouce>(GameStateResouce.NAME);
     const assets = update.assets();
 
-    const ldtk = assets.assume<LdtkData>(GameAssets.LevelData.LdtkData.Handle);
+    const ldtk = assets.assume<LdtkData>(GameAssets.Clockworld.Ldtk.Handle);
 
     const levelName = `Level_${gameState.level}`;
     const level = ldtk.levels.find(x => x.identifier == levelName)!;
     const entities = level.layerInstances.find(x => x.__identifier == 'Entities')!;
-    const movingObstacle = entities.entityInstances.find(x => x.__identifier == 'name here')!; // TODO get the entitiy name from ldtk
+    const movingObstacle = entities.entityInstances.find(x => x.__identifier == 'MovingObstacle')!; // TODO get the entitiy name from ldtk
     const offset = new Vec2(level.pxWid, level.pxHei).scalarMultiply(-0.5);
     const position = new Vec2(movingObstacle.px[0], level.pxHei - movingObstacle.px[1]).add(offset);
 
@@ -35,9 +36,10 @@ export default function SpawnMovingObstacle(update: Update) {
    update.spawn([
        new Position(position),
        new Sprite(
-       GameAssets.LevelData.Paddles.Texture.Handle,
-       GameAssets.LevelData.Paddles.Atlas.Handle,
-       Layers.Entities,
+        GameAssets.Clockworld.Texture.Handle,
+        GameAssets.Clockworld.Atlas.Handle,
+        Layers.Entities,
+        '0,64'
        ),
        UseSpriteRenderer,
        new Velocity(Vec2.ZERO),

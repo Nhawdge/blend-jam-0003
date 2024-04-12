@@ -16,11 +16,11 @@ export default function GamePlugin(builder: Builder) {
   
   // Player plugin
 
-  // moving wall plugin (obstacles that the player must avoid)
-  builder.plugin(MovingObstaclePlugin);
   
   builder.plugin(WinFlagPlugin);
   */
+ // moving wall plugin (obstacles that the player must avoid)
+  builder.plugin(MovingObstaclePlugin);
 
 
   
