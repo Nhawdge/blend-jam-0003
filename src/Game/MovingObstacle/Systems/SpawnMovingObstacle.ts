@@ -1,4 +1,5 @@
 import LdtkData from "../../../2B2D/Assets/LdtkData";
+import { SpriteAtlas } from "../../../2B2D/Assets/SpriteAtlasAsset";
 import KineticBody from "../../../2B2D/Components/KineticBody";
 import MappedInput from "../../../2B2D/Components/MappedInput";
 import Position from "../../../2B2D/Components/Position";
@@ -35,9 +36,10 @@ export default function SpawnMovingObstacle(update: Update) {
    update.spawn([
        new Position(position),
        new Sprite(
-       GameAssets.Clockworld.Texture.Handle,
-       GameAssets.Clockworld.Atlas.Handle,
-       Layers.Entities,
+        GameAssets.Clockworld.Texture.Handle,
+        GameAssets.Clockworld.Atlas.Handle,
+        Layers.Entities,
+        '0,64'
        ),
        UseSpriteRenderer,
        new Velocity(Vec2.ZERO),
