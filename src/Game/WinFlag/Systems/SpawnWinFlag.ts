@@ -1,9 +1,7 @@
 import LdtkData from "../../../2B2D/Assets/LdtkData";
 import KineticBody from "../../../2B2D/Components/KineticBody";
-import MappedInput from "../../../2B2D/Components/MappedInput";
 import Position from "../../../2B2D/Components/Position";
 import Sprite from "../../../2B2D/Components/Sprite";
-import StateMachine from "../../../2B2D/Components/StateMachine";
 import UseSpriteRenderer from "../../../2B2D/Components/UseSpriteRenderer";
 import Velocity from "../../../2B2D/Components/Velocity";
 import Weight from "../../../2B2D/Components/Weight";
@@ -38,7 +36,6 @@ export default function SpawnWinFlag(update: Update) {
        ),
        UseSpriteRenderer,
        new Velocity(Vec2.ZERO),
-       //new KineticBody(new Vec2(16, 16)),
         new Weight(0),
        new WinFlag(),
        GameLoopCleanup,
