@@ -1,5 +1,5 @@
 import Builder from "./2B2D/Builder";
-import GamePlugin from "./Example/GamePlugin";
+import GamePlugin from "./Game/GamePlugin";
 
 async function main() {
   const builder = new Builder();
