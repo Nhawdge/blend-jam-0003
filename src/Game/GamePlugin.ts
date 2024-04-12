@@ -5,6 +5,7 @@ import GameLoopPlugin from "./GameLoop/GameLoopPlugin";
 import PlayerPlugin from "./Player/PlayerPlugin";
 import MovingObstaclePlugin from "./MovingObstacle/MovingObstaclePlugin";
 import WinFlagPlugin from "./WinFlag/WinFlagPlugin";
+import SoundsPlugin from "./Sounds/SoundsPlugin";
 
 export default function GamePlugin(builder: Builder) {
   // Init plugin loads stuff, spawns camera, etc.
@@ -19,4 +20,5 @@ export default function GamePlugin(builder: Builder) {
   builder.plugin(LevelPlugin);
   
   builder.plugin(GameLoopPlugin);
+  builder.plugin(SoundsPlugin);
 }

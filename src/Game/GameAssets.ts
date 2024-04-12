@@ -1,3 +1,4 @@
+import loadArrayBufferAsset from "../2B2D/Assets/ArrayBufferAsset";
 import loadJsonAsset from "../2B2D/Assets/JsonAsset";
 import LdtkData from "../2B2D/Assets/LdtkData";
 import loadSpriteAtlasAsset, { generateTiledSpriteAtlas } from "../2B2D/Assets/SpriteAtlasAsset";
@@ -35,12 +36,19 @@ const GameAssets = {
       Load: () => generateTiledSpriteAtlas(GameAssets.Clockworld.Atlas.Handle, new Vec2(32,32), new Vec2(3,3), new Vec2(0,0))
     }
   },
+  Sounds: {
+    Squawks: {
+      Handle: 'sounds',
+      Load: () => loadArrayBufferAsset(GameAssets.Sounds.Squawks.Handle, 'assets/sounds.opus')
+    }
+  },
   Load: (assets: AssetsResource) => {
     assets.add(GameAssets.JamAssets.Texture.Load());
     assets.add(GameAssets.JamAssets.Atlas.Load());
     assets.add(GameAssets.Clockworld.Texture.Load());
     assets.add(GameAssets.Clockworld.Ldtk.Load());
     assets.add(GameAssets.Clockworld.Atlas.Load());
+    assets.add(GameAssets.Sounds.Squawks.Load());
   },
   IsLoaded: (assets: AssetsResource) => {
     return assets.loaded([
@@ -48,7 +56,8 @@ const GameAssets = {
       GameAssets.JamAssets.Atlas.Handle,
       GameAssets.Clockworld.Texture.Handle,
       GameAssets.Clockworld.Ldtk.Handle,
-      GameAssets.Clockworld.Atlas.Handle
+      GameAssets.Clockworld.Atlas.Handle,
+      GameAssets.Sounds.Squawks.Handle
     ]);
   },
   LoadLevelTextures: (assets: AssetsResource) => {
