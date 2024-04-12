@@ -14,6 +14,8 @@ type PlayAudio = {
   handle: Handle,
   gain: number,
   loop: boolean,
+  offset: number | undefined,
+  duration: number | undefined
 }
 
 type AudioCommand = DecodeAudio | PlayAudio;
@@ -55,9 +57,9 @@ export default class AudioResource implements Resource, Ticker {
     return id;
   }
 
-  play(handle:Handle, waitForReady:boolean = false, gain: number = 1, loop: boolean = false) {
+  play(handle:Handle, waitForReady:boolean = false, gain: number = 1, loop: boolean = false, offset: number | undefined = undefined, duration: number | undefined = undefined) {
     const id = ++this.index;
-    this.queue.push({ id, waitForReady, command: { type: 'play', handle, gain, loop } });
+    this.queue.push({ id, waitForReady, command: { type: 'play', handle, gain, loop, offset, duration } });
     return id;
   }
 
@@ -147,7 +149,7 @@ export default class AudioResource implements Resource, Ticker {
     
     source.loop = command.loop;
 
-    source.start(this.audioContext.currentTime);
+    source.start(this.audioContext.currentTime, command.offset, command.duration);
 
     this.playingAudio.set(id, { gainNode, source });
   }
