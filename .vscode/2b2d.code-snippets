@@ -42,5 +42,21 @@
 			"\treadonly name:string = ${1:name}.NAME;",
 			"}"
 		]
+	},
+	"gameasset": {
+		"scope": "typescript",
+		"prefix": "gasset",
+		"body": [
+			"${1:assetname}: {",
+				"\tTexture: {",
+				  "\tHandle: '${2:name}-texture',",
+				  "\tLoad: () => loadTextureAsset(${3:path}, '${2:name}-texture')",
+				"},",
+				"Atlas: {",
+				  "\tHandle: '${2:name}-atlas',",
+				  "\tLoad: () => loadSpriteAtlasAsset(${3:path}, '${2:name}-atlas')",
+				"}",
+			"}"
+		]
 	}
 }
