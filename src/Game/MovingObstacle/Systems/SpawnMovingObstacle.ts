@@ -1,5 +1,6 @@
 import LdtkData from "../../../2B2D/Assets/LdtkData";
 import { SpriteAtlas } from "../../../2B2D/Assets/SpriteAtlasAsset";
+import Animated from "../../../2B2D/Components/Animated";
 import KineticBody from "../../../2B2D/Components/KineticBody";
 import MappedInput from "../../../2B2D/Components/MappedInput";
 import Position from "../../../2B2D/Components/Position";
@@ -27,26 +28,31 @@ export default function SpawnMovingObstacle(update: Update) {
     const levelName = `Level_${gameState.level}`;
     const level = ldtk.levels.find(x => x.identifier == levelName)!;
     const entities = level.layerInstances.find(x => x.__identifier == 'Entities')!;
-    const movingObstacle = entities.entityInstances.find(x => x.__identifier == 'MovingObstacle')!; // TODO get the entitiy name from ldtk
-    const offset = new Vec2(level.pxWid, level.pxHei).scalarMultiply(-0.5);
-    const position = new Vec2(movingObstacle.px[0], level.pxHei - movingObstacle.px[1]).add(offset);
+    const movingObstacles = entities.entityInstances.filter(x => x.__identifier == 'MovingObstacle')!; // TODO get the entitiy name from ldtk
 
-    /* TODO: add the spawn once we have textures from LDTK, from GameAssets.ts
-    */
-   update.spawn([
-       new Position(position),
-       new Sprite(
-        GameAssets.Clockworld.Texture.Handle,
-        GameAssets.Clockworld.Atlas.Handle,
-        Layers.Entities,
-        '0,64'
-       ),
-       UseSpriteRenderer,
-       new Velocity(Vec2.ZERO),
-       new KineticBody(new Vec2(16, 16)),
-       new Weight(0), // Turn off gravity.
-       new MovingObstacle(),
-       GameLoopCleanup,
-       new StateMachine(IdleState.Instance),
-   ]);   
+    for (var movingObstacle of movingObstacles) {
+
+        const offset = new Vec2(level.pxWid, level.pxHei).scalarMultiply(-0.5);
+        const position = new Vec2(movingObstacle.px[0], level.pxHei - movingObstacle.px[1]).add(offset);
+
+        /* TODO: add the spawn once we have textures from LDTK, from GameAssets.ts
+        */
+        update.spawn([
+            new Position(position),
+            new Sprite(
+                GameAssets.JamAssets.Texture.Handle,
+                GameAssets.JamAssets.Atlas.Handle,
+                Layers.Entities,
+                '0'
+            ),
+            UseSpriteRenderer,
+            new Velocity(Vec2.ZERO),
+            new KineticBody(new Vec2(16, 16)),
+            new Weight(0), // Turn off gravity.
+            new MovingObstacle(),
+            GameLoopCleanup,
+            new StateMachine(IdleState.Instance),
+            new Animated('MovingWall_Idle')
+        ]);
+    }
 }
