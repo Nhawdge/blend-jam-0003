@@ -51,7 +51,10 @@ export default class RenderingSystem {
     this.createWorldUniformBuffer();
     this.createFrameUniformBuffer();
     this.createSampler();
+    this.createOnScreenControlls();
   }
+
+  
 
   initCanvas() {
     const gameDiv = document.getElementById('game')!;
@@ -123,6 +126,49 @@ export default class RenderingSystem {
       minFilter: 'nearest',
     })
   }
+
+  private createOnScreenControlls() {
+    const divElement = document.getElementById('on-screen-controls');
+
+    if (!divElement) {
+        console.error('Div element not found');
+        return;
+    }
+
+    this.createOnScreenKey("W", this.emulateKeyPress.bind(this, 'w'), this.emulateKeyUp.bind(this, 'w'), "on-screen-w", divElement);
+    this.createOnScreenKey("S", this.emulateKeyPress.bind(this, 's'), this.emulateKeyUp.bind(this, 's'), "on-screen-s", divElement);
+    this.createOnScreenKey("A", this.emulateKeyPress.bind(this, 'a'), this.emulateKeyUp.bind(this, 'a'), "on-screen-a", divElement);
+    this.createOnScreenKey("D", this.emulateKeyPress.bind(this, 'd'), this.emulateKeyUp.bind(this, 'd'), "on-screen-d", divElement);
+    this.createOnScreenKey("SPACE", this.emulateKeyPress.bind(this, 'space'), this.emulateKeyUp.bind(this, 'space'), "on-screen-space", divElement);
+    this.createOnScreenKey("E", this.emulateKeyPress.bind(this, 'e'), this.emulateKeyUp.bind(this, 'e'), "on-screen-e", divElement);
+}
+
+
+private emulateKeyPress(key: string) {
+    const event = new KeyboardEvent('keydown', {
+        key: key,
+        keyCode: key.charCodeAt(0), // Get the ASCII code of the key
+    });
+    document.dispatchEvent(event);
+}
+
+private emulateKeyUp(key: string) {
+    const event = new KeyboardEvent('keyup', {
+        key: key,
+        keyCode: key.charCodeAt(0), // Get the ASCII code of the key
+    });
+    document.dispatchEvent(event);
+}
+
+private createOnScreenKey(keyText: string, keyDownFunction: EventListener, keyUpFunction: EventListener, keyClassName: string, parentElement: HTMLElement) {
+  const buttonElement = document.createElement('button');
+  buttonElement.classList.add(keyClassName);
+  buttonElement.textContent = keyText;
+  buttonElement.addEventListener('mousedown', keyDownFunction);
+  buttonElement.addEventListener('mouseup', keyUpFunction);
+
+  parentElement.appendChild(buttonElement);
+}
 
   draw(update: Update) {
     // Get a list of renderers that are ready to execute

@@ -19,11 +19,54 @@
         animation: fix-image-rendering-bug .0001s; 
       }
 
-      @keyframes fix-image-rendering-bug {   from { opacity: 0.9999; }   to { opacity: 1; } 
+      @keyframes fix-image-rendering-bug {   from { opacity: 0.9999; }   to { opacity: 1; } }
     </style>
     <script type="module" src="src/index.ts"></script>
   </head>
   <body>
     <div id="game"></div>
+    <div id="on-screen-controls"></div>
+  <style>
+    #on-screen-controls {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: fit-content;
+        margin: 0 auto;
+        
+    }
+
+    .on-screen-w, .on-screen-s, .on-screen-a, .on-screen-d, .on-screen-e, .on-screen-space {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px 25px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .on-screen-w {
+      grid-row: 1;
+      grid-column: 2;
+    }
+    .on-screen-s, .on-screen-a, .on-screen-d {
+        grid-row: 2;
+    }
+
+    .on-screen-e, .on-screen-space {
+        grid-row: 3;
+    }
+
+    .on-screen-space {
+        grid-column: span 2;
+    }
+
+    .on-screen-w:hover, .on-screen-s:hover, .on-screen-a:hover, .on-screen-d:hover, .on-screen-e:hover, .on-screen-space:hover {
+        background-color: #e0e0e0;
+    }
+  </style>
   </body>
 </html>
