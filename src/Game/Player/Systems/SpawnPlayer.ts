@@ -37,21 +37,25 @@ export default function SpawnPlayer(update: Update) {
           a.keyboard('w');
           a.keyboard('W');
           a.keyboard('ArrowUp');
+          a.negative(1, 0.25);
         });
         b.for(PlayerActions.Down, a => {
           a.keyboard('s');
           a.keyboard('S');
           a.keyboard('ArrowDown');
+          a.positive(1, 0.25);
         });
         b.for(PlayerActions.Left, a => {
             a.keyboard('a');
             a.keyboard('A');
             a.keyboard('ArrowLeft');
+            a.negative(0, 0.25);
         });
         b.for(PlayerActions.Right, a => {
             a.keyboard('d');
             a.keyboard('D');
             a.keyboard('ArrowRight');
+            a.positive(0, 0.25);
         })
     });
 
