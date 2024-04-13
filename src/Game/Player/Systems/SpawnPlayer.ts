@@ -75,7 +75,7 @@ export default function SpawnPlayer(update: Update) {
        new Velocity(Vec2.ZERO),
        new KineticBody(new Vec2(10, 15)),
        new Weight(0),
-       new Player(),
+       new Player(position),
        GameLoopCleanup,
        new StateMachine(IdleState.Instance),
        inputMap,

@@ -25,7 +25,6 @@ export default function UpdateTweenChains(update: Update) {
     }
 
     chain.time += delta;
-    const t = update.get(item.entity, MovingObstacle.NAME);
 
     const lastStep = chain.steps[chain.steps.length - 1];
     if (chain.time >= lastStep.end.time) {
@@ -34,7 +33,7 @@ export default function UpdateTweenChains(update: Update) {
         continue;
       }
       
-      update.despawn(entityId);
+      update.despawn(item.entity);
       if (chain.signal)
         update.signals.send(chain.signal);
       continue;
@@ -47,9 +46,6 @@ export default function UpdateTweenChains(update: Update) {
     const timeInTask = chain.time - step.start.time;
     const deltaTime = step.end.time - step.start.time;
     const progress = timeInTask / deltaTime;
-    if (t) {
-      console.log(progress);
-    }
 
     const position = update.get<Position>(entityId, Position.NAME);
     const sprite = update.get<Sprite>(entityId, Sprite.NAME);
