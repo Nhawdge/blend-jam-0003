@@ -1,3 +1,4 @@
+import MovingObstacle from "../../Game/MovingObstacle/Components/MovingObstacle";
 import Position from "../Components/Position";
 import Sprite from "../Components/Sprite";
 import TweenChain from "../Components/TweenChain";
@@ -10,8 +11,10 @@ export default function UpdateTweenChains(update: Update) {
 
   for (const item of query) {
     const [chain] = item.components as [TweenChain];
-    if (chain.steps.length === 0)
+    if (!chain.enabled || chain.steps.length === 0)
       continue;
+
+
 
     let entityId = item.entity;
     if (chain.entity !== undefined) {
@@ -22,8 +25,15 @@ export default function UpdateTweenChains(update: Update) {
     }
 
     chain.time += delta;
+    const t = update.get(item.entity, MovingObstacle.NAME);
+
     const lastStep = chain.steps[chain.steps.length - 1];
     if (chain.time >= lastStep.end.time) {
+      if (chain.loop) {
+        chain.time = 0;
+        continue;
+      }
+      
       update.despawn(entityId);
       if (chain.signal)
         update.signals.send(chain.signal);
@@ -37,6 +47,9 @@ export default function UpdateTweenChains(update: Update) {
     const timeInTask = chain.time - step.start.time;
     const deltaTime = step.end.time - step.start.time;
     const progress = timeInTask / deltaTime;
+    if (t) {
+      console.log(progress);
+    }
 
     const position = update.get<Position>(entityId, Position.NAME);
     const sprite = update.get<Sprite>(entityId, Sprite.NAME);

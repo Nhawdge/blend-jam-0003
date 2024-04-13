@@ -29,6 +29,10 @@ export default class TweenChain implements Component {
 
   time: number = 0;
 
+  loop: boolean = false;
+
+  enabled: boolean = true;
+
   static build(step?: (builder: TweenStepItemBuilder) => void) {
     const builder = new TweenStepItemBuilder({ time: 0, color: undefined, position: undefined, scale: undefined, radians: undefined });
     if (step)

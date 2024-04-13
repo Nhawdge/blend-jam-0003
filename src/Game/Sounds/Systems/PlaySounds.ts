@@ -21,7 +21,6 @@ export default function PlaySounds(update: Update) {
   const index = Math.floor(remaining.length * Math.random());
   const squawk = remaining[index];
 
-  console.log(remaining);
   remaining.splice(index, 1);
 
   audio.play(GameAssets.Sounds.Squawks.Handle, true, 1, false, squawk.start, squawk.duration);

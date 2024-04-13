@@ -25,6 +25,14 @@ export default interface LdtkData {
       intGridCsv: number[],
       entityInstances: {
         __identifier: string,
+        fieldInstances: {
+          __identifier: string,
+          __type: string,
+          __value: {
+            cx: number,
+            cy: number
+          }
+        }[],
         __grid: [number, number],
         px: [number, number],
       }[],
