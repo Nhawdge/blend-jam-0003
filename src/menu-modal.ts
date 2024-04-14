@@ -12,6 +12,8 @@ window.addEventListener('click', (event) => {
     }
 });
 
+const modalClosedEvent = new Event('modalClosed');
+
 
 function closeModal(modalId: string) {
     let audio: HTMLAudioElement = document.getElementById('menuMusic') as HTMLAudioElement;
@@ -20,6 +22,7 @@ function closeModal(modalId: string) {
     if (modal) {
         modal.style.display = "none";
     }
+    document.dispatchEvent(modalClosedEvent);
 }
 
 function openModal(modalId: string) {

@@ -40,6 +40,10 @@ const GameAssets = {
     Squawks: {
       Handle: 'sounds',
       Load: () => loadArrayBufferAsset(GameAssets.Sounds.Squawks.Handle, 'assets/sounds.opus')
+    },
+    Music: {
+      Handle: 'music',
+      Load: () => loadArrayBufferAsset(GameAssets.Sounds.Music.Handle, 'assets/bgmusic.opus')
     }
   },
   Load: (assets: AssetsResource) => {
@@ -49,6 +53,7 @@ const GameAssets = {
     assets.add(GameAssets.Clockworld.Ldtk.Load());
     assets.add(GameAssets.Clockworld.Atlas.Load());
     assets.add(GameAssets.Sounds.Squawks.Load());
+    assets.add(GameAssets.Sounds.Music.Load());
   },
   IsLoaded: (assets: AssetsResource) => {
     return assets.loaded([
@@ -57,7 +62,8 @@ const GameAssets = {
       GameAssets.Clockworld.Texture.Handle,
       GameAssets.Clockworld.Ldtk.Handle,
       GameAssets.Clockworld.Atlas.Handle,
-      GameAssets.Sounds.Squawks.Handle
+      GameAssets.Sounds.Squawks.Handle,
+      GameAssets.Sounds.Music.Handle,
     ]);
   },
   LoadLevelTextures: (assets: AssetsResource) => {

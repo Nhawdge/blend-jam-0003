@@ -9,8 +9,6 @@ import ObstacleTarget from "../../MovingObstacle/ObstacleTarget";
 import Player from "../Components/Player";
 
 export default function GetHitByObstacle(update: Update, signals: Signal[]) {
-  console.log(signals);
-
   const evs = signals as CollisionTargetHit[];
   const playerWasHit = evs.find(x => x.sender == ObstacleTarget);
   if (!playerWasHit)
