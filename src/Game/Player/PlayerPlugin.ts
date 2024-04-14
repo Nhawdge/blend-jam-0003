@@ -5,6 +5,7 @@ import CameraFollow from "./Systems/CameraFollow";
 import GetHitByObstacle from "./Systems/GetHitByObstacle";
 import SpawnPlayer from "./Systems/SpawnPlayer";
 import Talk from "./Systems/Talk";
+import TouchWinFlag from "./Systems/TouchWinFlag";
 
 export default function PlayerPlugin(builder: Builder)
 {
@@ -12,4 +13,5 @@ export default function PlayerPlugin(builder: Builder)
     builder.update(GameLoopState, CameraFollow);
     builder.update(GameLoopState, Talk);
     builder.handle(CollisionTargetHit.NAME, GetHitByObstacle);
+    builder.handle(CollisionTargetHit.NAME, TouchWinFlag);
 }

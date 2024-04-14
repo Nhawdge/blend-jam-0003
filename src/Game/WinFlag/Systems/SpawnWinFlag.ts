@@ -1,5 +1,7 @@
 import LdtkData from "../../../2B2D/Assets/LdtkData";
+import CollisionTarget from "../../../2B2D/Components/CollisionTarget";
 import KineticBody from "../../../2B2D/Components/KineticBody";
+import Parent from "../../../2B2D/Components/Parent";
 import Position from "../../../2B2D/Components/Position";
 import Sprite from "../../../2B2D/Components/Sprite";
 import UseSpriteRenderer from "../../../2B2D/Components/UseSpriteRenderer";
@@ -12,6 +14,7 @@ import GameLoopCleanup from "../../GameLoop/Components/GameLoopCleanup";
 import GameStateResouce from "../../GameStateResource";
 import Layers from "../../Layers";
 import WinFlag from "../Components/WinFlag";
+import WinFlagTarget from "../WinFlagTarget";
 
 export default function SpawnWinFlag(update: Update) {
   const gameState = update.resource<GameStateResouce>(GameStateResouce.NAME);
@@ -27,7 +30,7 @@ export default function SpawnWinFlag(update: Update) {
     const offset = new Vec2(level.pxWid, level.pxHei).scalarMultiply(-0.5);
     const position = new Vec2(flag.px[0], level.pxHei - flag.px[1]).add(offset);
 
-    update.spawn([
+    const controller = update.spawn([
       new Position(position.add(new Vec2(16, -16))),
         new Sprite(
           GameAssets.Clockworld.Texture.Handle,
@@ -41,5 +44,12 @@ export default function SpawnWinFlag(update: Update) {
         new WinFlag(),
         GameLoopCleanup,
     ]);
+
+    const collisionSize = new Vec2(8, 12);
+    update.spawn([
+      new Parent(controller),
+      new CollisionTarget(WinFlagTarget, collisionSize),
+      Position.fromXY(0,-2)
+    ])
   }
 }

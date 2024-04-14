@@ -9,6 +9,7 @@ import processLdtkIntGrid from "../../../2B2D/Utils/LdtkUtilities";
 import GameAssets from "../../GameAssets";
 import GameStateResouce from "../../GameStateResource";
 import Layers from "../../Layers";
+import TouchWinFlag from "../../Player/Systems/TouchWinFlag";
 
 
 export default function SpawnLevel(update: Update) {
