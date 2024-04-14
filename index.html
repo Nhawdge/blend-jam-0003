@@ -70,6 +70,14 @@
       </div>
     </div>
   </div>
+  <script>
+    document.addEventListener('keydown', function (event) {
+      // If spacebar is pressed, prevent default action
+      if (event.keyCode === 32) {
+        event.preventDefault();
+      }
+    });
+  </script>
 
   <style>
     #on-screen-controls {
