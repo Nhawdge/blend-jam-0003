@@ -1,4 +1,5 @@
 import LdtkData from "../../../2B2D/Assets/LdtkData";
+import Animated from "../../../2B2D/Components/Animated.js";
 import CollisionTarget from "../../../2B2D/Components/CollisionTarget";
 import KineticBody from "../../../2B2D/Components/KineticBody";
 import Parent from "../../../2B2D/Components/Parent";
@@ -32,24 +33,25 @@ export default function SpawnWinFlag(update: Update) {
 
     const controller = update.spawn([
       new Position(position.add(new Vec2(16, -16))),
-        new Sprite(
-          GameAssets.Clockworld.Texture.Handle,
-          GameAssets.Clockworld.Atlas.Handle,
-          Layers.Entities,
-          '32,32'
-        ),
-        UseSpriteRenderer,
-        new Velocity(Vec2.ZERO),
-          new Weight(0),
-        new WinFlag(),
-        GameLoopCleanup,
+      new Sprite(
+        GameAssets.JamAssets.Texture.Handle,
+        GameAssets.JamAssets.Atlas.Handle,
+        Layers.Entities,
+        '0'
+      ),
+      UseSpriteRenderer,
+      new Velocity(Vec2.ZERO),
+      new Weight(0),
+      new WinFlag(),
+      GameLoopCleanup,
+      new Animated('WinFlag')
     ]);
 
     const collisionSize = new Vec2(8, 12);
     update.spawn([
       new Parent(controller),
       new CollisionTarget(WinFlagTarget, collisionSize),
-      Position.fromXY(0,-2)
+      Position.fromXY(0, -2)
     ])
   }
 }
