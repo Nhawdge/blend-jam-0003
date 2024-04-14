@@ -23,6 +23,7 @@ export default function SpawnLevel(update: Update) {
 
   update.spawn([
     new Tilemap(Layers.FG, GameAssets.Clockworld.Texture.Handle, tileHandle),
+    GameLoopCleanup,
     Position.fromXY(0, 0)
   ]);
   update.spawn([
@@ -36,6 +37,7 @@ export default function SpawnLevel(update: Update) {
 
   processLdtkIntGrid(ldtk, levelId, 'Collisions', 1, (pos, size) => {
     update.spawn([
+      GameLoopCleanup,
       new Position(pos),
       new StaticBody(size),
     ]);
@@ -47,8 +49,10 @@ export function GoToNextLevel(update: Update) {
   const gamestate = update.resource<GameStateResouce>(GameStateResouce.NAME);
   gamestate.level++;
 
+
   var cleanUp = update.query([GameLoopCleanup])
   cleanUp.forEach(x => update.despawn(x.entity));
+
   var tiles = update.query([])
   tiles.forEach(x => update.despawn(x.entity));
 
