@@ -68,27 +68,43 @@ export default abstract class BasePlayerState implements MachineState {
 
     let newVel = velocity.velocity;
     var isMoving = false;
-
+    var mic = update.single(["Microphone"])!;
+    var micSprite = update.get(mic.entity, Sprite.NAME) as Sprite;
+    var micAnimated = update.get(mic.entity, Animated.NAME) as Animated;
+    // Sorry for polluting your nice structure
     if (player.controlsEnabled && left) {
       newVel = newVel.add(new Vec2(-this.speed * delta, 0));
       sprite.scale = new Vec2(-1, 1);
+      micSprite.scale = new Vec2(-1, 1);
+
       animation.tag = "PlayerSide";
-      isMoving = true;      
+      micAnimated.tag = "PlayerSide_Microphone";
+
+      isMoving = true;
     }
     if (player.controlsEnabled && right) {
       newVel = newVel.add(new Vec2(this.speed * delta, 0));
       sprite.scale = new Vec2(1, 1);
       animation.tag = "PlayerSide";
+
+      micAnimated.tag = "PlayerSide_Microphone";
+      micSprite.scale = new Vec2(1, 1);
       isMoving = true;
     }
     if (player.controlsEnabled && up) {
       newVel = newVel.add(new Vec2(0, this.speed * delta));
       animation.tag = "PlayerUp";
+
+      micSprite.scale = new Vec2(1, 1);
+      micAnimated.tag = "PlayerUp_Microphone";
+
       isMoving = true;
     }
     if (player.controlsEnabled && down) {
       newVel = newVel.add(new Vec2(0, -this.speed * delta));
       animation.tag = "PlayerDown";
+      micAnimated.tag = "PlayerDown_Microphone";
+      micSprite.scale = new Vec2(1, 1);
       isMoving = true;
     }
     if (!isMoving) {

@@ -2,6 +2,7 @@ import LdtkData from "../../../2B2D/Assets/LdtkData";
 import Animated from "../../../2B2D/Components/Animated";
 import KineticBody from "../../../2B2D/Components/KineticBody";
 import MappedInput from "../../../2B2D/Components/MappedInput";
+import Parent from "../../../2B2D/Components/Parent.js";
 import Position from "../../../2B2D/Components/Position";
 import Sprite from "../../../2B2D/Components/Sprite";
 import StateMachine from "../../../2B2D/Components/StateMachine";
@@ -63,7 +64,7 @@ export default function SpawnPlayer(update: Update) {
     });
   });
 
-  update.spawn([
+  var playerEntity = update.spawn([
     new Position(position),
     new Sprite(
       GameAssets.JamAssets.Texture.Handle,
@@ -80,5 +81,19 @@ export default function SpawnPlayer(update: Update) {
     new StateMachine(IdleState.Instance),
     inputMap,
     new Animated('PlayerIdle')
+  ]);
+
+  update.spawn([
+    new Parent(playerEntity),
+    new Position(new Vec2(0,0)),
+    new Sprite(
+      GameAssets.JamAssets.Texture.Handle,
+      GameAssets.JamAssets.Atlas.Handle,
+      Layers.Entities,
+      '0'
+    ),
+    "Microphone",
+    UseSpriteRenderer,
+    new Animated('PlayerDown_Microphone')
   ]);
 }
