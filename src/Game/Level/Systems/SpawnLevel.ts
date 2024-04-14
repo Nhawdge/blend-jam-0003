@@ -7,6 +7,8 @@ import Vec2 from "../../../2B2D/Math/Vec2";
 import Update from "../../../2B2D/Update";
 import processLdtkIntGrid from "../../../2B2D/Utils/LdtkUtilities";
 import GameAssets from "../../GameAssets";
+import GameLoopCleanup from "../../GameLoop/Components/GameLoopCleanup.js";
+import GameLoopState from "../../GameLoop/States/GameLoopState.js";
 import GameStateResouce from "../../GameStateResource";
 import Layers from "../../Layers";
 import TouchWinFlag from "../../Player/Systems/TouchWinFlag";
@@ -29,8 +31,8 @@ export default function SpawnLevel(update: Update) {
   ]);
 
   const assets = update.assets();
-  const ldtk= assets.assume<LdtkData>(GameAssets.Clockworld.Ldtk.Handle);
-  
+  const ldtk = assets.assume<LdtkData>(GameAssets.Clockworld.Ldtk.Handle);
+
 
   processLdtkIntGrid(ldtk, levelId, 'Collisions', 1, (pos, size) => {
     update.spawn([
@@ -38,4 +40,18 @@ export default function SpawnLevel(update: Update) {
       new StaticBody(size),
     ]);
   });
+}
+
+export function GoToNextLevel(update: Update) {
+  update.exit(GameLoopState)
+  const gamestate = update.resource<GameStateResouce>(GameStateResouce.NAME);
+  gamestate.level++;
+
+  var cleanUp = update.query([GameLoopCleanup])
+  cleanUp.forEach(x => update.despawn(x.entity));
+  var tiles = update.query([])
+  tiles.forEach(x => update.despawn(x.entity));
+
+
+  update.enter(GameLoopState)
 }
